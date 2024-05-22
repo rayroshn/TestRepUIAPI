@@ -2,7 +2,7 @@ name: Playwright Tests
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, UI_API_Test ]
   pull_request:
     branches: [ main, master ]
 
