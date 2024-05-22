@@ -1,0 +1,66 @@
+name: Java BDD Cucumber with Playwright and TestNG
+
+on:
+  push:
+    branches:
+      - main
+      - 'release/*'
+      - 'feature/*'
+
+jobs:
+  test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Cache Node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Install project dependencies
+        run: mvn install -DskipTests
+
+      - name: Run Tests
+        run: java -cp "target/classes;target/test-classes;$(mvn dependency:build-classpath -Dmdep.outputFile=cp.txt)" org.testng.TestNG testng.xml
+
+      - name: Archive Test Results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: target/surefire-reports
+
+      - name: Archive Test Logs
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-logs
+          path: target/test-logs
