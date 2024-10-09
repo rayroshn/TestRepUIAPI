@@ -71,6 +71,8 @@ jobs:
           echo "Debugging Allure report generation..."
           ls -R target
           ls -R allure-report || echo "allure-report directory not found"
+        continue-on-error: true
+
 
       - name: Debug - Check Allure Results Content
         run: |
