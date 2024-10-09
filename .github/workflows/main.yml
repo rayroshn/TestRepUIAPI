@@ -72,6 +72,12 @@ jobs:
           ls -R target
           ls -R allure-report || echo "allure-report directory not found"
 
+      - name: Debug - Check Allure Results Content
+        run: |
+          echo "Checking content of allure-results directory:"
+          find . -name "allure-results" -type d -exec ls -R {} \;
+        continue-on-error: true
+
       - name: Deploy to GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
