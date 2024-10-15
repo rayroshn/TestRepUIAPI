@@ -1,0 +1,5 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","8989","Runs Cucumber Scenarios","Suite","Tue Oct 15 14:54:23 UTC 2024","passed","Tue Oct 15 14:54:32 UTC 2024","runners.TestRunner","Cucumber Tests","runners.TestRunner","runScenario"
+"","1541","Runs Cucumber Scenarios","Suite","Tue Oct 15 14:54:21 UTC 2024","passed","Tue Oct 15 14:54:23 UTC 2024","runners.TestRunner","Cucumber Tests","runners.TestRunner","runScenario"
+"","8454","Runs Cucumber Scenarios","Suite","Tue Oct 15 14:54:32 UTC 2024","passed","Tue Oct 15 14:54:41 UTC 2024","runners.TestRunner","Cucumber Tests","runners.TestRunner","runScenario"
+"","504","Runs Cucumber Scenarios","Suite","Tue Oct 15 14:54:23 UTC 2024","passed","Tue Oct 15 14:54:23 UTC 2024","runners.TestRunner","Cucumber Tests","runners.TestRunner","runScenario"
